@@ -74,9 +74,8 @@ isTwo(random);
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
 function calculateTip(a, b) {
-    var a = percentageTipped;
-    var b = billAmount;
-    return a + b;
+
+    return a * b;
 }
 calculateTip();
 /**
