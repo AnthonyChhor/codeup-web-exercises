@@ -61,6 +61,7 @@ var canEnroll = (totalCLassSize > currentClassSize) && workingHours;
 alert("It is " + canEnroll + " that the student that the student can enroll for class!");
 
 // premium offer for discount
+alert("Welcome to Automation World!");
 
 var premiumMember = confirm("Are you a premium member?");
 
