@@ -74,7 +74,8 @@ isTwo(random);
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
 function calculateTip(a, b) {
-
+    var a = percentageTipped;
+    var b = billAmount;
     return a + b;
 }
 calculateTip();
@@ -87,7 +88,7 @@ calculateTip();
 var percentageTipped = prompt("What percentage would you like to tip?");
 var billAmount = prompt("How much was your bill?");
 var totalAmountTipped = percentageTipped * billAmount;
-alert("The total amount you should be tipping is " + totalAmountTipped + "!");
+alert("The total amount you should be tipping is $" + totalAmountTipped + "!");
 /**
  * TODO:
  * Create a function named `applyDiscount`. This function should accept a price
@@ -107,7 +108,7 @@ var discountPercent = prompt("What was your discount percentage today");
 function applyDiscount() {
     return originalPrice * discountPercent;
 }
-alert("Your discount is " + applyDiscount());
+alert("Your discount is $" + applyDiscount());
 function finalPrice() {
     return originalPrice - applyDiscount();
 }
