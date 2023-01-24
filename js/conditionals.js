@@ -21,17 +21,17 @@
  * Test your function by passing various string literals to it and
  * console.logging the function's return value
  */
-function analyzeColor(colorName) {
-    if (colorName === "blue") {
-        return ("Awesome! My Favorite color is " + colorName + " as well!");
-    }
-    else if (colorName === "purple") {
-        return ("No Way! My favorite football team has the color " + colorName + " as their main color!");
-    }
-    else {
-        return ("That's cool! " + colorName.charAt(0).toUpperCase() + colorName.slice(1) + " isn't my favorite color, but everyone has their own personal preference!");
-    }
-}
+// function analyzeColor(colorName) {
+//     if (colorName === "blue") {
+//         return ("Awesome! My Favorite color is " + colorName + " as well!");
+//     }
+//     else if (colorName === "purple") {
+//         return ("No Way! My favorite football team has the color " + colorName + " as their main color!");
+//     }
+//     else {
+//         return ("That's cool! " + colorName.charAt(0).toUpperCase() + colorName.slice(1) + " isn't my favorite color, but everyone has their own personal preference!");
+//     }
+// }
 
 
 // Don't change the next two lines!
@@ -46,12 +46,24 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Pass the `randomColor` variable to your 'analyzeColor' function and console.log the results.
  * You should see a different message every time you refresh the page
  */
+// analyzeColor(randomColor);
 
 /**
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
-
+var favoriteColor = prompt("What is your favorite color?")
+switch(favoriteColor) {
+    case "blue":
+        alert("Awesome! My Favorite color is " + favoriteColor + " as well!");
+        break;
+    case "purple":
+        alert("No Way! My favorite football team has the color " + favoriteColor + " as their main color!");
+        break;
+    default:
+        alert("That's cool! " + favoriteColor.charAt(0).toUpperCase() + favoriteColor.slice(1) + " isn't my favorite color, but everyone has their own personal preference!");
+        break;
+}
 /**
  * TODO:
  * Prompt the user for a color when the page loads, and pass the input from the
