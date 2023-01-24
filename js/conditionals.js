@@ -100,6 +100,38 @@ analyzeColor(colorForTheFunction); {
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
+var luckyNumber = Math.floor((Math.random() * 6));
+var totalAmount = prompt("What is the total amount of your bill?")
+
+
+function calculateTotal(luckyNumber, totalAmount) {
+    if (luckyNumber === 0) {
+        return totalAmount;
+    }
+        else if (luckyNumber === 1) {
+            // return .10 * totalAmount;
+            alert("Your total is " + (.10 * totalAmount) + "!");
+    }
+        else if (luckyNumber === 2) {
+            // return .25 * totalAmount;
+            alert("Your total is " + (.25 * totalAmount) + "!");
+
+    }
+        else if (luckyNumber === 3) {
+            // return .35 * totalAmount;
+            alert("Your total is " + (.35 * totalAmount) + "!");
+
+    }
+        else if (luckyNumber === 4) {
+            // return .50 * totalAmount;
+            alert("Your total is " + (.50 * totalAmount) + "!");
+
+    }
+        else if (luckyNumber === 5) {
+            alert("Everything is free!");
+    }
+}
+
 
 /**
  * TODO:
