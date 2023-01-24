@@ -100,37 +100,37 @@ analyzeColor(colorForTheFunction); {
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
-var luckyNumber = Math.floor((Math.random() * 6));
-var totalAmount = prompt("What is the total amount of your bill?")
+// var luckyNumber = Math.floor((Math.random() * 6));
+// var totalAmount = prompt("What is the total amount of your bill?")
 
 
-function calculateTotal(luckyNumber, totalAmount) {
-    if (luckyNumber === 0) {
-        return totalAmount;
-    }
-        else if (luckyNumber === 1) {
-            // return .10 * totalAmount;
-            alert("Your total is " + (.10 * totalAmount) + "!");
-    }
-        else if (luckyNumber === 2) {
-            // return .25 * totalAmount;
-            alert("Your total is " + (.25 * totalAmount) + "!");
-
-    }
-        else if (luckyNumber === 3) {
-            // return .35 * totalAmount;
-            alert("Your total is " + (.35 * totalAmount) + "!");
-
-    }
-        else if (luckyNumber === 4) {
-            // return .50 * totalAmount;
-            alert("Your total is " + (.50 * totalAmount) + "!");
-
-    }
-        else if (luckyNumber === 5) {
-            alert("Everything is free!");
-    }
-}
+// function calculateTotal(luckyNumber, totalAmount) {
+//     if (luckyNumber === 0) {
+//         return totalAmount;
+//     }
+//         else if (luckyNumber === 1) {
+//             // return .10 * totalAmount;
+//             alert("Your total is " + (.10 * totalAmount) + "!");
+//     }
+//         else if (luckyNumber === 2) {
+//             // return .25 * totalAmount;
+//             alert("Your total is " + (.25 * totalAmount) + "!");
+//
+//     }
+//         else if (luckyNumber === 3) {
+//             // return .35 * totalAmount;
+//             alert("Your total is " + (.35 * totalAmount) + "!");
+//
+//     }
+//         else if (luckyNumber === 4) {
+//             // return .50 * totalAmount;
+//             alert("Your total is " + (.50 * totalAmount) + "!");
+//
+//     }
+//         else if (luckyNumber === 5) {
+//             alert("Everything is free!");
+//     }
+// }
 
 
 /**
@@ -142,7 +142,35 @@ function calculateTotal(luckyNumber, totalAmount) {
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+var luckyNumber = Math.floor(Math.random() * 6);
+var totalAmount = prompt("What is your total Bill?");
+function calculateTotal(luckyNumber, totalAmount) {
+    if (luckyNumber === 0) {
+        alert("Your total is " + totalAmount + ", because you have no discount!")
+    }
+        else if (luckyNumber === 1) {
+            // return .10 * totalAmount;
+            alert("Your lucky number is " + luckyNumber + ", your discount is 10%, your price before the discount is added is " + totalAmount + ", and your price after the discount is " + (.10 * totalAmount) + "!");
+    }
+        else if (luckyNumber === 2) {
+            // return .25 * totalAmount;
+            alert("Your lucky number is " + luckyNumber + ", your discount is 25%, your price before the discount is added is " + totalAmount + ", and your price after the discount is " + (.25 * totalAmount) + "!");
+
+    }
+        else if (luckyNumber === 3) {
+            // return .35 * totalAmount;
+            alert("Your lucky number is " + luckyNumber + ", your discount is 35%, your price before the discount is added is " + totalAmount + ", and your price after the discount is " + (.35 * totalAmount) + "!");
+
+    }
+        else if (luckyNumber === 4) {
+            // return .50 * totalAmount;
+            alert("Your lucky number is " + luckyNumber + ", your discount is 50%, your price before the discount is added is " + totalAmount + ", and your price after the discount is " + (.50 * totalAmount) + "!");
+
+    }
+        else if (luckyNumber === 5) {
+            alert("Your lucky number is " + luckyNumber + " so everything is free for you!");
+    }
+}
 
 /**
  * TODO:
