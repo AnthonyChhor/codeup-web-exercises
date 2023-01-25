@@ -190,3 +190,11 @@ function calculateTotal(luckyNumber, totalAmount) {
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+var enterNumber = confirm("Would you like to enter a number?");
+    if (enterNumber === true) {
+        var numberPrompt = prompt("What is you number?");
+    }   else {
+        alert("Okay, that's fine. You don't have to enter a number!");
+    }
+
+
