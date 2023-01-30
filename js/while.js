@@ -11,7 +11,7 @@ var newAmountOfCones = allCones - soldCones;
 do {
     console.log( allCones + " is the amount of cones you have!");
     console.log(soldCones + " cones were sold!");
-    allCones -= soldCones;
+
     console.log("Your new amount of cones is " + (allCones -= soldCones) + "!")
     if (allCones <= 0) {
         console.log("Sorry, can't sell you " + allCones + " cones.");
