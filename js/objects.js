@@ -81,6 +81,14 @@
      * > console.log(books[0].author.lastName) // "Adams"
      */
 
+    var books = [
+        {title:"The Fault In Our Stars", author: {firstName:"John", lastName:"Green"}},
+        {title:"Gone Girl", author: {firstName:"Gillian", lastName:"Flynn"}},
+        {title:"The Beginning of Everything", author: {firstName:"Robyn", lastName:"Schneider"}},
+        {title:"Verity", author: {firstName:"Colleen", lastName:"Hoover"}},
+        {title:"The Silmarillion", author: {firstName:"J. R. R.", lastName:"Tolkien"}},
+    ];
+
     /**
      * TODO:
      * Loop through the books array and output the following information about
@@ -105,6 +113,10 @@
      *      ---
      *      ...
      */
+
+    books.forEach(function(bookInfo) {
+        console.log("Book # " + (books.indexOf(bookInfo) + 1) + "\n" + "Title: " + bookInfo.title + "\n" + "Author: " + bookInfo.author.firstName + " " + bookInfo.author.lastName + "\n---");
+    });
 
     /**
      * Bonus:
