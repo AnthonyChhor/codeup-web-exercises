@@ -62,7 +62,7 @@
             }
         });
     }
-    amountAfterDiscount()
+    amountAfterDiscount();
 
 
 
@@ -143,16 +143,16 @@ function createBook(title, first, last) {
 
 }
 
-var arrayoOfBooks = [
+var arrayOfBooks = [
     createBook("The Fault In Our Stars", "John", "Green"),
     createBook("Gone Girl", "Gillian", "Flynn"),
     createBook("The Beginning of Everything", "Robyn", "Schneider"),
     createBook("Verity", "Colleen", "Hoover"),
     createBook("The Silmarillion", "J. R. R.", "Tolkien"),
 ];
-console.log(arrayoOfBooks);
+console.log(arrayOfBooks);
 
-arrayoOfBooks.forEach(function (showBookInfo) {
-    console.log("Book # " + (arrayoOfBooks.indexOf(showBookInfo) + 1) + "\n" + "Title: " + showBookInfo.title + "\n" + "Author: " + showBookInfo.firstName + " " + showBookInfo.lastName + "\n---");
+arrayOfBooks.forEach(function (showBookInfo) {
+    console.log("Book # " + (arrayOfBooks.indexOf(showBookInfo) + 1) + "\n" + "Title: " + showBookInfo.title + "\n" + "Author: " + showBookInfo.firstName + " " + showBookInfo.lastName + "\n---");
 });
 
