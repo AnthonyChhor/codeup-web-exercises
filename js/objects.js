@@ -51,7 +51,7 @@
         {name: 'Ryan', amount: 250},
         {name: 'George', amount: 320}
     ];
-    function amountAfterDiscount(total) {
+    function amountAfterDiscount() {
         shoppers.forEach(function(originalAmount) {
             if (originalAmount.amount > 200) {
                 var discount = originalAmount.amount * .12;
