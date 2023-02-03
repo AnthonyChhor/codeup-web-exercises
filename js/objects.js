@@ -28,7 +28,7 @@
      */
     person.sayHello = function () {
         console.log("Hello from " + person.firstName + " " + person.lastName + "!");
-    }
+    };
     person.sayHello();
 
 
