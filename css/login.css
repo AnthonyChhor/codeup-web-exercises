@@ -11,6 +11,7 @@ body, html {
 }
 
 form {
+    margin: 1em;
     /* This form should be separated from other elements by 1em */
     /* There must be 1em between the content and the border of this element */
 }
@@ -61,7 +62,8 @@ fieldset {
     padding-bottom: 8px;
     color: white;
     font-weight: bold;
-    border: 1px lightgrey;
+    border-width: 1px;
+    border-color: lightgrey;
 
     /* There must be a separation of 8px between the text and the border of this element */
     /* The text color of this element should be white and bold */
@@ -76,6 +78,7 @@ fieldset {
     padding-bottom: 4px;
     margin-top: .5em;
     margin-bottom: .5em;
+
     /* There must be 4px on top of the text and below the text of an input with this class */
     /* It should have a separation of .5em from elements on top of it and below it */
 
