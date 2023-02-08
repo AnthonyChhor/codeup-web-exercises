@@ -1,0 +1,34 @@
+.main-heading {
+    text-align: center;
+}
+
+h1, h3 {
+    text-decoration: underline;
+    color: purple;
+}
+
+body {
+    background-color: skyblue;
+    font-family: sans-serif;
+}
+
+body {
+    background-image: url("https://previews.123rf.com/images/dodes11/dodes111505/dodes11150500032/39892725-background-abstract-vector-illustration-modern-web-page-background-ornate-background-design-template.jpg");
+}
+
+ul {
+    list-style-type: circle;
+}
+
+ol {
+    list-style-type: square;
+}
+
+table, th, td {
+    border: 1px solid;
+}
+
+a:hover {
+    color: green;
+}
+
