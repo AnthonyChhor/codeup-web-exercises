@@ -1,0 +1,58 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.material-symbols-outlined {
+    font-variation-settings:
+            'FILL' 5,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 48
+
+}
+
+ul {
+    list-style-type: none;
+}
+
+.nav-bar {
+    background-color: #b2b2b2;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover {
+    color: blue;
+}
+
+h3 {
+    padding-left: 7em;
+    padding-right: 7em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 3em;
+    padding-top: .2em;
+    padding-bottom: .2em;
+}
+
+
+
+
+
+
+
