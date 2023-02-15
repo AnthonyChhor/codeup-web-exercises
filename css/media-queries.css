@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+}
+@media screen and (min-width: 451px) {
+    h1 {
+        float: left;
+
+    }
+
+    .hidden-on-desktop {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style-type: none;
+        text-decoration: none;
+        justify-content: flex-end;
+    }
+
+    li {
+        display: flex;
+        padding-right: .8em;
+        padding-left: .8em;
+        align-items: center;
+    }
+
+    .main {
+        display: flex;
+        width: 60%;
+        justify-content: flex-start;
+        margin-top: 3em;
+        margin-right: 2em;
+        float: left;
+    }
+
+    .main h2 {
+        position: absolute;
+        display: flex;
+        margin-top: -1em;
+    }
+
+    .sub-section h2 {
+        display: flex;
+        position: absolute;
+        margin-top: -1em;
+    }
+
+    .sub-section {
+        display: flex;
+        width: 30%;
+        height: 20em;
+        margin-top: 3em;
+        justify-content: flex-start;
+        align-content: space-around;
+        margin-bottom:15em;
+    }
+
+    #social-media-links img {
+        display: flex;
+        width: 3%;
+        height: 3%;
+        justify-content: flex-end;
+        align-content: flex-end;
+        margin-right: .3em;
+        float: right;
+    }
+
+    .header-img img {
+        display: flex;
+        margin-right: auto;
+        margin-left: auto;
+        justify-content: center;
+    }
+
+    footer p {
+        display: flex;
+        float: left;
+    }
+
+}
+
+@media screen and (min-width: 1px) and (max-width: 450px) {
+    .alert-info {
+        display: flex;
+        background-color: #8dd7f5;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid darkgray;
+        padding: .5em;
+    }
+    li {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+
+        align-items: center;
+        background-color: #848487;
+        margin-right: 2.3em;
+        margin-left: -.1em;
+        margin-bottom: .6em;
+        padding: .7em;
+
+    }
+
+    .header-img img {
+        display: flex;
+        margin-right: auto;
+        margin-left: auto;
+        justify-content: center;
+        width: 80%;
+        height: 50%;
+
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    footer p {
+        display: flex;
+        float: left;
+    }
+
+    #social-media-links img {
+        display: flex;
+        justify-content: flex-end;
+        width: 6%;
+        margin: .3em;
+        float: right;
+    }
+}
+
+
+
+
+
+
