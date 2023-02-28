@@ -7,6 +7,13 @@
 <body>
 
 <h1 id="main-header">Hello World!</h1>
+
+<button id="btn1">Submit</button>
+<button id="btn2">Submit</button>
+<button id="btn3">Submit</button>
+<button id="btn4">Submit</button>
+
+
 <ul>
     <li data-dbid="1">Item 1</li>
     <li data-dbid="2">Item 2</li>
@@ -58,6 +65,32 @@
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
         subParagraphs.innerHTML = "Mission Accomplished!";
         console.log(subParagraphs.innerHTML);
+
+    //     BUTTONS!!!
+
+        var buttonOne = function () {
+            mainHeader.innerHTML = "JavaScript is Cool";
+        }
+        document.getElementById("btn1").addEventListener("click", buttonOne);
+
+        var buttonTwo = function () {
+            subHeader.style.color = "blue";
+        }
+        document.getElementById("btn2").addEventListener("click", buttonTwo);
+
+        var buttonThree = function () {
+            for (let i = 0; i < listItems.length; i++) {
+                if (i % 2 !== 0) {
+                    listItems[i].style.color = "grey";
+                }
+            }
+        }
+        document.getElementById("btn3").addEventListener("click", buttonThree);
+
+        var buttonFour = function () {
+            dbIdBlue.style.color = "blue";
+        }
+        document.getElementById("btn4").addEventListener("click",buttonFour);
     })();
 </script>
 </body></html>
