@@ -17,7 +17,7 @@
     </div>
     
     <div>
-        <ul id="codeup">
+        <ul class="codeup">
             <li id="apple">apples</li>
             <li id="orange">oranges</li>
             <li id="watermelon">watermelon</li>
@@ -30,9 +30,10 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
             integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script>
-       $(".codeup").css("border", "1px solid red");
-
-
+        $("li").css("font-size", "20px");
+        $("li, h1, p").css("background-color", "yellow");
+        let headerAlert = $("h1").html();
+        alert(headerAlert);
     </script>
 </section>
 </body>
