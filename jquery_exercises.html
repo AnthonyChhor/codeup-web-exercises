@@ -7,17 +7,17 @@
 <body>
 <section>
     <div>
-        <h1 id="title-top">Welcome to Jquery Introductions!</h1>
+        <h1 class="codeup">Welcome to Jquery Introductions!</h1>
     </div>
     
-    <div class="main-text">
+    <div class="codeup">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam autem corporis cumque dignissimos dolores
             eligendi eos hic illum ipsa ipsum, minima nam natus nostrum optio repudiandae tempore voluptas voluptatem
             voluptatum?</p>
     </div>
     
     <div>
-        <ul class="fruits">
+        <ul id="codeup">
             <li id="apple">apples</li>
             <li id="orange">oranges</li>
             <li id="watermelon">watermelon</li>
@@ -30,21 +30,8 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
             integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script>
-        // $(function () {
-        //     alert("The DOM has finished loading!");
-        // });
+       $(".codeup").css("border", "1px solid red");
 
-        let fruit = $("#apple").html();
-        alert(fruit);
-
-        // let fruit = $("#orange").html();
-        // alert(fruit);
-
-        // let fruit = $("#watermelon").html();
-        // alert(fruit);
-        //
-        // let fruit = $("#grape").html();
-        // alert(fruit);
 
     </script>
 </section>
