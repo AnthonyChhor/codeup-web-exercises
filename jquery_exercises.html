@@ -30,10 +30,22 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
             integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script>
-        $("li").css("font-size", "20px");
-        $("li, h1, p").css("background-color", "yellow");
-        let headerAlert = $("h1").html();
-        alert(headerAlert);
+        $("h1").click(function() {
+            $("h1").css("background-color", "yellow");
+        });
+
+        $("p").dblclick(function(){
+            $("p").css("font-size", "18px");
+        });
+
+        $('li').hover(function() {
+                $('li').css('color', 'red');
+            },
+            function() {
+                $('li').css('color', 'black');
+            }
+        );
+
     </script>
 </section>
 </body>
