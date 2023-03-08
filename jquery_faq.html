@@ -52,6 +52,33 @@
     <dd class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facere fugiat repellat?</dd>
 </dl>
 
+<button class="btn2">Click me for a yellow background on your lists!</button>
+
+
+<h3 class="football">Football Teams</h3>
+<ul class="football-teams">
+    <li>Baltimore Ravens</li>
+    <li>Kansas City Chiefs</li>
+    <li>San Francisco 49ers</li>
+    <li>Dallas Cowboys</li>
+</ul>
+
+<h3 class="basketball">Basketball Teams</h3>
+<ul class="basketball-teams">
+    <li>Lakers</li>
+    <li>Cavaliers</li>
+    <li>Heat</li>
+    <li>Magic</li>
+</ul>
+
+<h3 class="baseball">Baseball Teams</h3>
+<ul class="baseball-teams">
+    <li>Royals</li>
+    <li>Rays</li>
+    <li>Mariners</li>
+    <li>Cardinals</li>
+</ul>
+
 
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
@@ -60,14 +87,29 @@
 
 
     $(".facts").click(function () {
-            $("dd").toggleClass('invisible')
-        });
+        $("dd").toggleClass('invisible')
+    });
 
-    $('dt').click(function() {
-        $('dt').toggleClass('highlight')
+    $('dt').click(function () {
+        $(this).next().toggleClass('highlight')
     });
 
 
+    $('.btn2').click(function () {
+        $('ul').each(function () {
+            $(this).children().last().css('background-color', 'yellow');
+        })
+    });
+
+    $('h3').click(function() {
+        $(this).next().css('font-weight', 'bold');
+    });
+
+    $('li').click(function () {
+        $('ul').click(function () {
+            $(this).children().first().css('color', 'blue')
+        })
+    })
 
 
 </script>
