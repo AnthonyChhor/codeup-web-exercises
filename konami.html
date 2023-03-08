@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Konami Code</title>
+</head>
+<body>
+<h1>Enter the konami code</h1>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script>
+  "use strict";
+
+
+  let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+  let konamiIndex = [];
+
+
+
+  $(document).keyup(function(event){
+        konamiIndex.push(event.keyCode);
+          console.log(event.keyCode);
+      if (event.keyCode === 13) {
+          konamiCheck(konamiIndex);
+
+      }
+  });
+
+  function konamiCheck(konamiIndex) {
+      if (konamiIndex.join(",") === konamiCode.join(",")) {
+          $(function () {
+              alert("You have gained 30 lives!");
+              $("html").css("background-color", "dodgerblue");
+          });
+      }     else {
+          $(function () {
+              window.location.reload();
+          })
+      }
+  }
+
+
+</script>
+</body>
+
+</html>

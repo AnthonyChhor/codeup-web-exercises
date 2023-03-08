@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Essential Methods</title>
+</head>
+<body>
+<style>
+    .invisible {
+        visibility: hidden;
+    }
+
+    .highlight {
+        background-color: yellow;
+    }
+</style>
+
+<a class="facts" href="#">Click here to reveal the facts!</a>
+
+
+<p>10 Facts About National Parks:</p>
+
+<dl>
+    <dt><strong>Fact #1</strong></dt>
+    <dd class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facere fugiat repellat?</dd>
+
+    <dt><strong>Fact #2</strong></dt>
+    <dd class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facere fugiat repellat?</dd>
+
+    <dt><strong>Fact #3</strong></dt>
+    <dd class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facere fugiat repellat?</dd>
+
+    <dt><strong>Fact #4</strong></dt>
+    <dd class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facere fugiat repellat?</dd>
+
+    <dt><strong>Fact #5</strong></dt>
+    <dd class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facere fugiat repellat?</dd>
+
+    <dt><strong>Fact #6</strong></dt>
+    <dd class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facere fugiat repellat?</dd>
+
+    <dt><strong>Fact #7</strong></dt>
+    <dd class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facere fugiat repellat?</dd>
+
+    <dt><strong>Fact #8</strong></dt>
+    <dd class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facere fugiat repellat?</dd>
+
+    <dt><strong>Fact #9</strong></dt>
+    <dd class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facere fugiat repellat?</dd>
+
+    <dt><strong>Fact #10</strong></dt>
+    <dd class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facere fugiat repellat?</dd>
+</dl>
+
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+<script>
+
+
+    $(".facts").click(function () {
+            $("dd").toggleClass('invisible')
+        });
+
+    $('dt').click(function() {
+        $('dt').toggleClass('highlight')
+    });
+
+
+
+
+</script>
+
+</body>
+</html>

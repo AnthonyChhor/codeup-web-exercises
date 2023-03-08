@@ -9,13 +9,13 @@
     <div>
         <h1 class="codeup">Welcome to Jquery Introductions!</h1>
     </div>
-    
+
     <div class="codeup">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam autem corporis cumque dignissimos dolores
             eligendi eos hic illum ipsa ipsum, minima nam natus nostrum optio repudiandae tempore voluptas voluptatem
             voluptatum?</p>
     </div>
-    
+
     <div>
         <ul class="codeup">
             <li id="apple">apples</li>
@@ -24,24 +24,23 @@
             <li id="grape">grapes</li>
         </ul>
     </div>
-    
 
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
             integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script>
-        $("h1").click(function() {
+        $("h1").click(function () {
             $("h1").css("background-color", "yellow");
         });
 
-        $("p").dblclick(function(){
+        $("p").dblclick(function () {
             $("p").css("font-size", "18px");
         });
 
-        $('li').hover(function() {
+        $('li').hover(function () {
                 $('li').css('color', 'red');
             },
-            function() {
+            function () {
                 $('li').css('color', 'black');
             }
         );
