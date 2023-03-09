@@ -4,3 +4,8 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+h5 {
+    color: #0fb784;
+    text-decoration: underline;
+}
