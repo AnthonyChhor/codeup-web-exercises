@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox</title>
+    <!--MAPBOX CDN-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet'/>
+
+</head>
+<body>
+<h1>Mapbox API</h1>
+
+<div class="zoom-container">
+    <select id="zoom-btn">
+        <option value="zoom level">Zoom Level: Default(10) </option>
+        <option value="zoom 5"> Zoom Level: 5</option>
+        <option value="zoom 15"> Zoom Level: 15</option>
+        <option value="zoom 20"> Zoom Level: 20</option>
+    </select>
+</div>
+<br>
+
+<style>
+    html {
+       background-color: dodgerblue;
+
+    }
+
+
+    #map {
+        border: 4px solid black;
+        height: 40vh;
+        width: 100%;
+    }
+
+    img {
+        height: 90px;
+        width: 100%;
+        object-fit: cover;
+    }
+</style>
+
+<!--MAPBOX LAYOUT-->
+<div id='map'></div>
+<script>
+    <!--    ACCESS TOKEN-->
+    let myToken = "pk.eyJ1IjoiYWNoaG9yMTIiLCJhIjoiY2xmMm9wN3VtMGIwYzN2bGVvOWVlMjhyNyJ9.9kboYZhl8j1RUOaBCIrZuQ";
+
+    mapboxgl.accessToken = myToken
+
+    const map = new mapboxgl.Map(
+        {
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/satellite-streets-v12', // style URL
+            center: [-96.7970, 32.7767], // starting position [lng, lat]
+            zoom: 10, // starting zoom
+        }
+    );
+
+    // ZOOM SELECT OPTION
+    let zoomSelect = document.querySelector("#zoom-btn");
+
+    function zoomOptions(e) {
+        e.preventDefault();
+        let zoomSelection = zoomSelect.value;
+
+        switch (zoomSelection) {
+            case "zoom level":
+                map.setZoom(10);
+                break;
+            case "zoom 5":
+                map.setZoom(5);
+                break;
+            case "zoom 15":
+                map.setZoom(15);
+                break;
+            case "zoom 20":
+                map.setZoom(20);
+                break;
+        }
+    }
+
+    zoomSelect.addEventListener('change', zoomOptions)
+
+
+    //MARKER #1 FOGO DE CHAO
+
+    let myMarker1 = new mapboxgl.Marker();
+    myMarker1.setLngLat([-96.80134657608687, 32.802930143726265]);
+    myMarker1.addTo(map);
+
+    // MARKER #2 HATTIE B'S CHICKEN
+
+    let myMarker2 = new mapboxgl.Marker();
+    myMarker2.setLngLat([-96.77955510769726, 32.786994429749676]);
+    myMarker2.addTo(map);
+
+    // MARKER #3 FOR CHOP HOUSE BURGER
+
+    let myMarker3 = new mapboxgl.Marker();
+    myMarker3.setLngLat([-96.7993653590812, 32.78133219526845])
+    myMarker3.addTo(map);
+
+
+    // POPUP #1 FOR FOGO DE CHAO
+
+    let myPopup1 = new mapboxgl.Popup();
+    myPopup1.setLngLat([-96.80134657608687, 32.802930143726265]);
+    myPopup1.setHTML("<span>Fogo De Chao</span>" +
+        "<p>Picanha here is the best!</p>" + "<img src='img/picanha.png'>");
+    myMarker1.setPopup(myPopup1);
+
+    //     POPUP #2 FOR HATTIE B'S CHICKEN
+
+    let myPopup2 = new mapboxgl.Popup();
+    myPopup2.setLngLat([-96.77955510769726, 32.786994429749676]);
+    myPopup2.setHTML("<span>Hattie B's Chicken</span>" +
+        "<p>The best fried chicken you'll ever have!</p>" + "<img src='img/fried-chicken.jpeg' alt='fried-chicken'>");
+    myMarker2.setPopup(myPopup2);
+
+    //     POPUP #3 FOR CHOP HOUSE BURGER
+
+    let myPopup3 = new mapboxgl.Popup();
+    myPopup3.setLngLat([-96.7993653590812, 32.78133219526845]);
+    myPopup3.setHTML("<span>Chop House Burger</span>" +
+        "<p>Nothing beats a good burger and this is one of the best around!</p>" + "<img src='img/burger.jpeg' alt='burger'>");
+    myMarker3.setPopup(myPopup3);
+
+    // GEOCODE AND REVERSE GEOCODE
+
+
+
+</script>
+
+</body>
+</html>
