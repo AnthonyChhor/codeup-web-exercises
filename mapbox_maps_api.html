@@ -30,7 +30,7 @@
 
     #map {
         border: 4px solid black;
-        height: 40vh;
+        height: 60vh;
         width: 100%;
     }
 
@@ -54,9 +54,29 @@
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/satellite-streets-v12', // style URL
             center: [-96.7970, 32.7767], // starting position [lng, lat]
-            zoom: 10, // starting zoom
+            zoom: 5, // starting zoom
         }
     );
+
+    // ORIGIN FOR DALLAS PINPOINT
+
+    function geocode(search, token) {
+        var baseUrl = 'https://api.mapbox.com';
+        var endPoint = '/geocoding/v5/mapbox.places/';
+        return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+            .then(function (res) {
+                return res.json();
+                // to get all the data from the request, comment out the following three lines...
+            }).then(function (data) {
+                return data.features[0].center;
+            });
+    }
+
+    geocode("Dallas, TX", mapboxgl.accessToken).then(function (result) {
+        console.log(result);
+        map.setCenter(result.center);
+        map.setZoom(10);
+    });
 
     // ZOOM SELECT OPTION
     let zoomSelect = document.querySelector("#zoom-btn");
@@ -89,18 +109,41 @@
     let myMarker1 = new mapboxgl.Marker();
     myMarker1.setLngLat([-96.80134657608687, 32.802930143726265]);
     myMarker1.addTo(map);
+    myMarker1.getElement().addEventListener("click", function() {
+        map.flyTo({
+            center: [-96.80134657608687, 32.802930143726265],
+            zoom: 17,
+            speed: 1,
+        });
+    });
+
+
 
     // MARKER #2 HATTIE B'S CHICKEN
 
     let myMarker2 = new mapboxgl.Marker();
     myMarker2.setLngLat([-96.77955510769726, 32.786994429749676]);
     myMarker2.addTo(map);
+    myMarker2.getElement().addEventListener("click", function() {
+        map.flyTo({
+            center: [-96.77955510769726, 32.786994429749676],
+            zoom: 17,
+            speed: 1,
+        });
+    });
 
     // MARKER #3 FOR CHOP HOUSE BURGER
 
     let myMarker3 = new mapboxgl.Marker();
     myMarker3.setLngLat([-96.7993653590812, 32.78133219526845])
     myMarker3.addTo(map);
+    myMarker3.getElement().addEventListener("click", function() {
+        map.flyTo({
+            center: [-96.7993653590812, 32.78133219526845],
+            zoom: 17,
+            speed: 1,
+        });
+    });
 
 
     // POPUP #1 FOR FOGO DE CHAO
@@ -127,7 +170,25 @@
         "<p>Nothing beats a good burger and this is one of the best around!</p>" + "<img src='img/burger.jpeg' alt='burger'>");
     myMarker3.setPopup(myPopup3);
 
-    // GEOCODE AND REVERSE GEOCODE
+// RESTAURANT LIST
+
+    let restaurantList = [{
+        Id: 1,
+        Name: "Fogo De Chao",
+        Location: "2619 McKinney Ave Suite 150, Dallas, TX 75204",
+        Info: "Picanha here is the best!",
+    },
+    {   Id: 2,
+        Name: "Hattie B's Chicken",
+        Location: "3000 Main St, Dallas, TX 75226",
+        Info: "The best fried chicken you'll ever have!",
+    },
+    {   Id: 3,
+        Name: "Choop House Burger",
+        Location: "1501 Main St, Dallas, TX 75201",
+        Info: "Nothing beats a good burger and this is one of the best around!"
+    }]
+
 
 
 
