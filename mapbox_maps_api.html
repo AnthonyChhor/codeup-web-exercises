@@ -43,11 +43,13 @@
 
 <!--MAPBOX LAYOUT-->
 <div id='map'></div>
+<script src="js/mapbox-geocoder.utils.js"></script>
+<script src="js/keys.js"></script>
 <script>
     <!--    ACCESS TOKEN-->
-    let myToken = "pk.eyJ1IjoiYWNoaG9yMTIiLCJhIjoiY2xmMm9wN3VtMGIwYzN2bGVvOWVlMjhyNyJ9.9kboYZhl8j1RUOaBCIrZuQ";
+    let myToken = mapboxApi;
 
-    mapboxgl.accessToken = myToken
+    mapboxgl.accessToken = myToken;
 
     const map = new mapboxgl.Map(
         {
