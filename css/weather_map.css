@@ -2,3 +2,14 @@ h1 {
     background-color: dodgerblue;
     color: white;
 }
+
+.weather-card {
+    white-space: nowrap;
+    text-align: left;
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 2%;
+    /*display: inline-block;*/
+    margin: .5em;
+}
