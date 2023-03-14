@@ -1,15 +1,69 @@
 h1 {
-    background-color: dodgerblue;
-    color: white;
+    font-size: 4rem;
+    padding-top: 15px;
+    background-color: #005fc4;
+    color: #FFF;
+    height: 100px;
+    text-align: center;
 }
 
-.weather-card {
-    white-space: nowrap;
-    text-align: left;
-    width: auto;
+body {
+    background-color: dodgerblue;
+}
+
+h6 {
+    background-color: #dadada;
+    width: 100%;
+}
+
+.forecast-card {
+    display: inline-block;
+    width: 150px;
     height: auto;
-    border: 1px solid black;
-    border-radius: 2%;
-    /*display: inline-block;*/
-    margin: .5em;
+}
+
+
+
+.weather-icon {
+    height: 10px;
+    width: 15px;
+    margin-bottom: 50px;
+    margin-left: 48px;
+
+}
+
+/*.current-weather-icon {*/
+/*    height: 10px;*/
+/*    width: 15px;*/
+/*    margin-bottom: 50px;*/
+/*    margin-left: 48px;*/
+/*}*/
+
+
+
+#weather-card {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.date-bg {
+    background-color: #ffff75;
+}
+
+#map {
+    width: 65%;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid #005fc4;
+}
+
+#weather-forecast-small {
+    width: 210px;
+    height: auto;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 3em;
 }
