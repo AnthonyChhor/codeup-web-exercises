@@ -1,12 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+
 /*MAIN HTML ELEMENTS AND HEADERS*/
 
 h1 {
+    font-family: 'Righteous', cursive;
     font-size: 4rem;
     padding-top: 15px;
     background-color: #005fc4;
     color: #FFF;
     height: 100px;
     text-align: center;
+}
+
+h2 {
+    font-family: 'Righteous', cursive;
 }
 
 body {

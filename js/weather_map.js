@@ -10,7 +10,6 @@ function geocodeWeatherForecast(searchInput) {
             let forecastInfo = data.list;
 
             for (let i = 1; i < 6; i++) {
-
                 html += '<div id="card-' + [i] + '" class="forecast-card card">';
                 html += '<div class="date-bg">' + nextFiveDays[i] + '</div>';
                 html += "<h6>Location: " + data.city.name + "</h6>";
@@ -72,12 +71,14 @@ function geoCodeCurrentWeather(searchString) {
         console.log(result[1]);
         $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`).done(function (currentData) {
             console.log(currentData);
+            htmlCurrent += "<div class=''>";
             htmlCurrent += '<div class="date-bg">' + nextFiveDays[0] + '</div>';
             htmlCurrent += "<h6>Location: " + currentData.name + "</h6>";
             htmlCurrent += "<p>Current Temperature: " + parseInt(currentData.main.temp) + "&deg;" + "F</p>";
             htmlCurrent += "<div class='current-weather-icon'>"
             htmlCurrent += '<img src="https://openweathermap.org/img/w/' + currentData.weather[0].icon + '.png"></div>';
             htmlCurrent += "<p class='solo-weather'>Weather: " + currentData.weather[0].description + "</p>";
+            htmlCurrent += "</div>";
             $("#weather-forecast-small").html(htmlCurrent);
 
 
@@ -99,17 +100,29 @@ function geoCodeCurrentWeatherDetails(searchString) {
     geocode(searchString, mapboxApi).then(function (result) {
         console.log(result[0]);
         console.log(result[1]);
+        function timeConverter(UNIX_timestamp) {
+            var a = new Date(UNIX_timestamp * 1000);
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var year = a.getFullYear();
+            var month = months[a.getMonth()];
+            var date = a.getDate();
+            var hour = a.getHours();
+            var min = a.getMinutes();
+            var sec = a.getSeconds();
+            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+            return time;
 
+        }
 
         // console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`);
-        $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`).done(function (currentData) {
+        $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`).done(function (currentData) {
             console.log(currentData);
             htmlDetail += "<div class='text-center text-white'><h2>Today's Weather Forecast:  </h2></div>";
             htmlDetail += "<div class='d-flex col-12'>";
-            htmlDetail += "<div class='col-3 card current-weather-details'><p>Current average wind speed: " + parseInt(currentData.wind.speed) + " knots</p></div>";
-            htmlDetail += "<div class='col-3 card current-weather-details'><p>Current Temperature: " + parseInt(currentData.main.temp) + "&deg;" + "F</p>\n<p>Feels like: " + parseInt(currentData.main.feels_like) + "&deg;" + "F</p></div>";
-            htmlDetail += "<div class='col-3 card current-weather-details'><p>Weather: " + currentData.weather[0].main + "</p></div>";
-            htmlDetail += "<div class='col-3 card current-weather-details'><p>Current humidity: " + parseInt(currentData.main.humidity) + "</p></div>";
+            htmlDetail += "<div class='col-3 card current-weather-details'><p>Current average wind speed: " + parseInt(currentData.current.wind_speed) + " knots</p></div>";
+            htmlDetail += "<div class='col-3 card current-weather-details'><p>Max Temp: " + parseInt(currentData.daily[0].temp.max) + "&deg;" + "F</p>\n<p>Min Temp: " + parseInt(currentData.daily[0].temp.min) + "&deg;" + "F</p>\n<p>Feels like: " + parseInt(currentData.current.feels_like) + "&deg;" + "F</p></div>";
+            htmlDetail += "<div class='col-3 card current-weather-details'><p>Weather: " + currentData.current.weather[0].description + "</p>\n<p>Sunrise: " + timeConverter(currentData.current.sunrise) + "</p>\n<p>Sunset: " + timeConverter(currentData.current.sunset) + "</p></div>";
+            htmlDetail += "<div class='col-3 card current-weather-details'><p>Current humidity: " + parseInt(currentData.current.humidity) + "</p>\n<p>UVI: " + currentData.daily[0].uvi + "</p>\n<p>Dew Point: " + currentData.current.dew_point + "</p></div>";
             htmlDetail += "</div>";
             $("#weather-forecast-details").html(htmlDetail);
 
@@ -136,30 +149,69 @@ var map = new mapboxgl.Map({
     center: personalLocation, // [lng, lat]
 });
 
-// MARKER ON DRAG END
 
 geocode("Dallas, TX", mapboxgl.accessToken).then(function (result) {
     map.setCenter(result.center);
     map.setZoom(10);
-
-
     let myMarker = new mapboxgl.Marker({draggable: true})
         .setLngLat([-96.7968, 32.7762])
         .addTo(map);
 
+    myMarker.on("dragend", function () {
+            lonResult = myMarker.getLngLat().lng;
+            latResult = myMarker.getLngLat().lat
+            myMarkerForecast();
+        });
 
-    function onDragEnd() {
-        let dragLngLat = myMarker.getLngLat();
-        personalLocation = [dragLngLat.lng, dragLngLat.lat];
-    }
-
-    myMarker.on("dragend", onDragEnd);
-    map.on("click", (e) => {
-        let dragLngLat = e.lngLat;
-        personalLocation = [dragLngLat.lng, dragLngLat.lat];
-        myMarker.setLngLat(personalLocation);
-    });
 })
+
+// MARKER WEATHER UPDATE
+
+function myMarkerForecast() {
+    $.get("https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=" + latResult + "&lon=" + lonResult + "&appid=" + weatherAPI).done(function (data) {
+        console.log(data);
+        let html = '';
+        let forecastInfo = data.list;
+        let cityLocation = data.city.name;
+        let countryLocation = data.city.country;
+        console.log(cityLocation + ', ' + countryLocation);
+        function timeConverter(UNIX_timestamp) {
+            var a = new Date(UNIX_timestamp * 1000);
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var year = a.getFullYear();
+            var month = months[a.getMonth()];
+            var date = a.getDate();
+            var hour = a.getHours();
+            var min = a.getMinutes();
+            var sec = a.getSeconds();
+            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+            return time;
+
+        }
+
+        for (let i = 1; i < 6; i++) {
+            html += '<div id="card-' + [i] + '" class="forecast-card card">';
+            html += '<div class="date-bg">' + nextFiveDays[i] + '</div>';
+            html += "<h6>Location: " + data.city.name + "</h6>";
+            html += "<p>Average Temp: " + parseInt(forecastInfo[i].main.temp) + "&deg;" + "F" + "</p>";
+            // html += "<p>Max Temp: " + parseInt(forecastInfo[i].main.temp_max) + "&deg;" + "F" + "</p>";
+            html += "<div class='weather-icon'>";
+            html += '<img src="https://openweathermap.org/img/w/' + forecastInfo[i].weather[0].icon + '.png"></div>';
+            html += "<div class='weather'>";
+            html += "<p>" + forecastInfo[i].weather[0].main + "</p></div>";
+            html += "</div>";
+
+        }
+
+        $("#weather-card").html(html);
+    })
+}
+
+
+
+
+
+
 
 
 
