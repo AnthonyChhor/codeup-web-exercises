@@ -100,7 +100,7 @@ function geoCodeCurrentWeatherDetails(searchString) {
             var hour = a.getHours();
             var min = a.getMinutes();
             var sec = a.getSeconds();
-            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+            var time = hour + ':' + min + ':' + sec;
             return time;
         }
 
@@ -110,7 +110,7 @@ function geoCodeCurrentWeatherDetails(searchString) {
             htmlDetail += "<div class='d-flex col-12'>";
             htmlDetail += "<div class='col-3 card current-weather-details'><p>Current average wind speed: " + parseInt(currentData.current.wind_speed) + " knots</p></div>";
             htmlDetail += "<div class='col-3 card current-weather-details'><p>Max Temp: " + parseInt(currentData.daily[0].temp.max) + "&deg;" + "F</p>\n<p>Min Temp: " + parseInt(currentData.daily[0].temp.min) + "&deg;" + "F</p>\n<p>Feels like: " + parseInt(currentData.current.feels_like) + "&deg;" + "F</p></div>";
-            htmlDetail += "<div class='col-3 card current-weather-details'><p>Weather: " + currentData.current.weather[0].description + "</p>\n<p>Sunrise: " + timeConverter(currentData.current.sunrise) + "</p>\n<p>Sunset: " + timeConverter(currentData.current.sunset) + "</p></div>";
+            htmlDetail += "<div class='col-3 card current-weather-details'><p>Weather: " + currentData.current.weather[0].description + "</p>\n<p>Sunrise: " + timeConverter(currentData.current.sunrise) + " A.M.</p>\n<p>Sunset: " + timeConverter(currentData.current.sunset) + " P.M.</p></div>";
             htmlDetail += "<div class='col-3 card current-weather-details'><p>Current humidity: " + parseInt(currentData.current.humidity) + "</p>\n<p>UVI: " + currentData.daily[0].uvi + "</p>\n<p>Dew Point: " + currentData.current.dew_point + "</p></div>";
             htmlDetail += "</div>";
             $("#weather-forecast-details").html(htmlDetail);
@@ -204,7 +204,7 @@ function myMarkerForecast() {
             var hour = a.getHours();
             var min = a.getMinutes();
             var sec = a.getSeconds();
-            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+            var time = hour + ':' + min + ':' + sec;
             return time;
         }
         $.get("https://api.openweathermap.org/data/2.5/onecall?units=imperial&lat=" + latResult + "&lon=" + lonResult + "&appid=" + weatherAPI).done(function (currentData) {
@@ -213,7 +213,7 @@ function myMarkerForecast() {
             htmlDetail += "<div class='d-flex col-12'>";
             htmlDetail += "<div class='col-3 card current-weather-details'><p>Current average wind speed: " + parseInt(currentData.current.wind_speed) + " knots</p></div>";
             htmlDetail += "<div class='col-3 card current-weather-details'><p>Max Temp: " + parseInt(currentData.daily[0].temp.max) + "&deg;" + "F</p>\n<p>Min Temp: " + parseInt(currentData.daily[0].temp.min) + "&deg;" + "F</p>\n<p>Feels like: " + parseInt(currentData.current.feels_like) + "&deg;" + "F</p></div>";
-            htmlDetail += "<div class='col-3 card current-weather-details'><p>Weather: " + currentData.current.weather[0].description + "</p>\n<p>Sunrise: " + timeConverter(currentData.current.sunrise) + "</p>\n<p>Sunset: " + timeConverter(currentData.current.sunset) + "</p></div>";
+            htmlDetail += "<div class='col-3 card current-weather-details'><p>Weather: " + currentData.current.weather[0].description + "</p>\n<p>Sunrise: " + timeConverter(currentData.current.sunrise) + " A.M.</p>\n<p>Sunset: " + timeConverter(currentData.current.sunset) + " P.M.</p></div>";
             htmlDetail += "<div class='col-3 card current-weather-details'><p>Current humidity: " + parseInt(currentData.current.humidity) + "</p>\n<p>UVI: " + currentData.daily[0].uvi + "</p>\n<p>Dew Point: " + currentData.current.dew_point + "</p></div>";
             htmlDetail += "</div>";
             $("#weather-forecast-details").html(htmlDetail);
