@@ -10,7 +10,7 @@ function geocodeWeatherForecast(searchInput) {
             for (let i = 1; i < 6; i++) {
                 html += '<div id="card-' + [i] + '" class="forecast-card card">';
                 html += '<div class="date-bg">' + nextFiveDays[i] + '</div>';
-                html += "<h6>Location: " + data.city.name + "</h6>";
+                html += "<h6>" + data.city.name + "</h6>";
                 html += "<p>Average Temp: " + parseInt(forecastInfo[i].main.temp) + "&deg;" + "F" + "</p>";
                 // html += "<p>Max Temp: " + parseInt(forecastInfo[i].main.temp_max) + "&deg;" + "F" + "</p>";
                 html += "<div class='weather-icon'>";
@@ -93,10 +93,6 @@ function geoCodeCurrentWeatherDetails(searchString) {
 
         function timeConverter(UNIX_timestamp) {
             var a = new Date(UNIX_timestamp * 1000);
-            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            var year = a.getFullYear();
-            var month = months[a.getMonth()];
-            var date = a.getDate();
             var hour = a.getHours();
             var min = a.getMinutes();
             var sec = a.getSeconds();
@@ -197,10 +193,6 @@ function myMarkerForecast() {
         $("#weather-card").html(html);
         function timeConverter(UNIX_timestamp) {
             var a = new Date(UNIX_timestamp * 1000);
-            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            var year = a.getFullYear();
-            var month = months[a.getMonth()];
-            var date = a.getDate();
             var hour = a.getHours();
             var min = a.getMinutes();
             var sec = a.getSeconds();
