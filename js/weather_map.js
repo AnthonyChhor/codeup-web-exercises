@@ -100,6 +100,7 @@ function geoCodeCurrentWeatherDetails(searchString) {
     geocode(searchString, mapboxApi).then(function (result) {
         console.log(result[0]);
         console.log(result[1]);
+
         function timeConverter(UNIX_timestamp) {
             var a = new Date(UNIX_timestamp * 1000);
             var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -114,7 +115,6 @@ function geoCodeCurrentWeatherDetails(searchString) {
 
         }
 
-        // console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`);
         $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`).done(function (currentData) {
             console.log(currentData);
             htmlDetail += "<div class='text-center text-white'><h2>Today's Weather Forecast:  </h2></div>";
@@ -158,10 +158,10 @@ geocode("Dallas, TX", mapboxgl.accessToken).then(function (result) {
         .addTo(map);
 
     myMarker.on("dragend", function () {
-            lonResult = myMarker.getLngLat().lng;
-            latResult = myMarker.getLngLat().lat
-            myMarkerForecast();
-        });
+        lonResult = myMarker.getLngLat().lng;
+        latResult = myMarker.getLngLat().lat
+        myMarkerForecast();
+    });
 
 })
 
@@ -175,6 +175,7 @@ function myMarkerForecast() {
         let cityLocation = data.city.name;
         let countryLocation = data.city.country;
         console.log(cityLocation + ', ' + countryLocation);
+
         function timeConverter(UNIX_timestamp) {
             var a = new Date(UNIX_timestamp * 1000);
             var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
