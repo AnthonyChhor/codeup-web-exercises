@@ -176,6 +176,7 @@ function myMarkerForecast() {
         console.log(data);
         let html = '';
         let htmlDetail = '';
+        let htmlCurrent = '';
         let forecastInfo = data.list;
         let cityLocation = data.city.name;
         let countryLocation = data.city.country;
@@ -217,6 +218,19 @@ function myMarkerForecast() {
             htmlDetail += "</div>";
             $("#weather-forecast-details").html(htmlDetail);
         })
+        $.get("https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=" + latResult + "&lon=" + lonResult + "&appid=" + weatherAPI).done(function (currentData) {
+            console.log(currentData);
+            htmlCurrent += "<div class=''>";
+            htmlCurrent += '<div class="date-bg">' + nextFiveDays[0] + '</div>';
+            htmlCurrent += "<h6>Location: " + currentData.name + "</h6>";
+            htmlCurrent += "<p>Current Temperature: " + parseInt(currentData.main.temp) + "&deg;" + "F</p>";
+            htmlCurrent += "<div class='current-weather-icon'>"
+            htmlCurrent += '<img src="https://openweathermap.org/img/w/' + currentData.weather[0].icon + '.png"></div>';
+            htmlCurrent += "<p class='solo-weather'>Weather: " + currentData.weather[0].description + "</p>";
+            htmlCurrent += "</div>";
+            $("#weather-forecast-small").html(htmlCurrent);
+        })
+
     })
 }
 
