@@ -30,13 +30,15 @@ function geocodeWeatherForecast(searchInput) {
     })
 }
 
-// FUNCTION FOR GETTING THE 5-DAY FORECAST
 
 geocodeWeatherForecast("Dallas, TX")
 $("#myBtn").click(function (e) {
     e.preventDefault();
     geocodeWeatherForecast($("#searchInput").val());
 })
+
+// FUNCTION FOR GETTING THE 5-DAY FORECAST
+
 
 let startDate = new Date()
 let nextFiveDays = getNextFiveDays(startDate)
@@ -117,7 +119,7 @@ function geoCodeCurrentWeatherDetails(searchString) {
 
         $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`).done(function (currentData) {
             console.log(currentData);
-            htmlDetail += "<div class='text-center text-white'><h2>Today's Weather Forecast:  </h2></div>";
+            htmlDetail += "<div class='text-center text-white bottom-weather-forecast'><h2>Today's Weather Forecast:  </h2></div>";
             htmlDetail += "<div class='d-flex col-12'>";
             htmlDetail += "<div class='col-3 card current-weather-details'><p>Current average wind speed: " + parseInt(currentData.current.wind_speed) + " knots</p></div>";
             htmlDetail += "<div class='col-3 card current-weather-details'><p>Max Temp: " + parseInt(currentData.daily[0].temp.max) + "&deg;" + "F</p>\n<p>Min Temp: " + parseInt(currentData.daily[0].temp.min) + "&deg;" + "F</p>\n<p>Feels like: " + parseInt(currentData.current.feels_like) + "&deg;" + "F</p></div>";
@@ -137,7 +139,7 @@ $("#myBtn").click(function (e) {
     geoCodeCurrentWeatherDetails($("#searchInput").val());
 })
 
-// MARKER LOCATION AND MAPBOX
+// MARKER LOCATION AND MAPBOX AND FLYTO FUNCTIONS
 
 let personalLocation = [-96.7968, 32.7762];
 
@@ -150,19 +152,38 @@ var map = new mapboxgl.Map({
 });
 
 
-geocode("Dallas, TX", mapboxgl.accessToken).then(function (result) {
+geocode(personalLocation, mapboxgl.accessToken).then(function (result) {
     map.setCenter(result.center);
     map.setZoom(10);
     let myMarker = new mapboxgl.Marker({draggable: true})
         .setLngLat([-96.7968, 32.7762])
         .addTo(map);
 
-    myMarker.on("dragend", function () {
+
+    myMarker.on("dragend", function (results) {
         lonResult = myMarker.getLngLat().lng;
         latResult = myMarker.getLngLat().lat
         myMarkerForecast();
-    });
 
+        map.flyTo({
+            center: myMarker.getLngLat(),
+            zoom: 10,
+            speed: 1
+        });
+
+    });
+})
+
+$("#myBtn").click(function (e) {
+    e.preventDefault();
+    userInput = ($("#searchInput").val());
+    geocode(userInput, mapboxgl.accessToken).then(function (result) {
+        map.flyTo({
+            center: result,
+            zoom: 10,
+            speed: 1
+        });
+    })
 })
 
 // MARKER WEATHER UPDATE
@@ -207,6 +228,7 @@ function myMarkerForecast() {
         $("#weather-card").html(html);
     })
 }
+
 
 
 
