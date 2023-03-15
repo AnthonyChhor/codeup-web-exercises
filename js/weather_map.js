@@ -14,8 +14,8 @@ function geocodeWeatherForecast(searchInput) {
                 html += '<div id="card-' + [i] + '" class="forecast-card card">';
                 html += '<div class="date-bg">' + nextFiveDays[i] + '</div>';
                 html += "<h6>Location: " + data.city.name + "</h6>";
-                html += "<p>Min Temp: " + parseInt(forecastInfo[i].main.temp_min) + "&deg;" + "F" + "</p>";
-                html += "<p>Max Temp: " + parseInt(forecastInfo[i].main.temp_max) + "&deg;" + "F" + "</p>";
+                html += "<p>Average Temp: " + parseInt(forecastInfo[i].main.temp) + "&deg;" + "F" + "</p>";
+                // html += "<p>Max Temp: " + parseInt(forecastInfo[i].main.temp_max) + "&deg;" + "F" + "</p>";
                 html += "<div class='weather-icon'>";
                 html += '<img src="https://openweathermap.org/img/w/' + forecastInfo[i].weather[0].icon + '.png"></div>';
                 html += "<div class='weather'>";
