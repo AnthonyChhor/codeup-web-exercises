@@ -1,3 +1,5 @@
+/*MAIN HTML ELEMENTS AND HEADERS*/
+
 h1 {
     font-size: 4rem;
     padding-top: 15px;
@@ -8,20 +10,27 @@ h1 {
 }
 
 body {
-    background-color: dodgerblue;
+    background-color: #57bdff;
 }
 
+
 h6 {
-    background-color: #dadada;
+    /*background-color: #dadada;*/
     width: 100%;
 }
 
+/*5-DAY FORECAST CARDS*/
+
 .forecast-card {
+    color: white;
     display: inline-block;
     width: 150px;
     height: auto;
-}
+    box-shadow: 5px 10px #464646;
+    background-color: #005fc4;
+    border: 4px ridge #8d8d8d;
 
+}
 
 
 .weather-icon {
@@ -32,14 +41,6 @@ h6 {
 
 }
 
-/*.current-weather-icon {*/
-/*    height: 10px;*/
-/*    width: 15px;*/
-/*    margin-bottom: 50px;*/
-/*    margin-left: 48px;*/
-/*}*/
-
-
 
 #weather-card {
     display: flex;
@@ -49,21 +50,74 @@ h6 {
 }
 
 .date-bg {
-    background-color: #ffff75;
+    text-decoration: underline;
+
 }
 
+/*MAPBOX*/
+
 #map {
-    width: 65%;
+    width: 75%;
     height: 500px;
     margin-left: auto;
     margin-right: auto;
     border: 3px solid #005fc4;
 }
 
+/*CURRENT WEATHER DETAILS*/
+
 #weather-forecast-small {
+    color: white;
     width: 210px;
     height: auto;
     margin: auto;
     text-align: center;
     margin-bottom: 3em;
+    box-shadow: 5px 10px #464646;
+    background-color: #005fc4;
+    border: 4px ridge #8d8d8d;
+}
+
+.current-weather-details {
+    color: white;
+    width: 210px;
+    height: 400px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 3em;
+    box-shadow: 5px 10px #464646;
+    background-color: #005fc4;
+    border: 4px ridge #8d8d8d;
+}
+
+#weather-forecast-details {
+    margin-top: .6em;
+    background-color: #57bdff;
+    border-top: 8px dotted #005fc4;
+}
+
+/*INPUT AND SUBMIT BUTTON*/
+
+#searchInput {
+    border: 0;
+    border-radius: 3px;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: #83efff;
+    box-shadow: 0 0 10px #83efff;
+}
+
+#myBtn {
+    background-color: dodgerblue;
+    border: 3px solid #005fc4;
+    border-radius: 3px;
+}
+
+#myBtn:hover {
+    color: white;
+    box-shadow: 0 0 20px #83efff;
+
+
 }

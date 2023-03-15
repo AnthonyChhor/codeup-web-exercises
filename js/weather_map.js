@@ -1,4 +1,4 @@
-
+// WEATHER INFORMATION FOR THE 5 DAY FORECAST
 
 function geocodeWeatherForecast(searchInput) {
     let html = "";
@@ -25,16 +25,13 @@ function geocodeWeatherForecast(searchInput) {
             }
 
             $("#weather-card").html(html);
-            // dailyWeatherOne();
-            // dailyWeatherTwo();
-            // dailyWeatherThree();
-            // dailyWeatherFour();
-            // dailyWeatherFive();
             // getDate(forecastInfo[i].dt)
 
         })
     })
 }
+
+// FUNCTION FOR GETTING THE 5-DAY FORECAST
 
 geocodeWeatherForecast("Dallas, TX")
 $("#myBtn").click(function (e) {
@@ -44,6 +41,7 @@ $("#myBtn").click(function (e) {
 
 let startDate = new Date()
 let nextFiveDays = getNextFiveDays(startDate)
+
 function getNextFiveDays(startDate) {
     const dates = [];
     for (let i = 0; i < 6; i++) {
@@ -65,36 +63,21 @@ function getDate(date) {
     });
 }
 
-
-
+//CURRENT WEATHER CARD
 
 function geoCodeCurrentWeather(searchString) {
     let htmlCurrent = "";
     geocode(searchString, mapboxApi).then(function (result) {
         console.log(result[0]);
         console.log(result[1]);
-
-        // console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`);
         $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`).done(function (currentData) {
             console.log(currentData);
-            // htmlCurrent += "<div>";
             htmlCurrent += '<div class="date-bg">' + nextFiveDays[0] + '</div>';
-
             htmlCurrent += "<h6>Location: " + currentData.name + "</h6>";
-
-            // htmlCurrent += "<h4>Current weather: " + currentData.weather[0].description + "</h4>";
-
-
-            // htmlCurrent += "<h5>Current average wind speed: " + parseInt(currentData.wind.speed) + "knots</h5>";
-
             htmlCurrent += "<p>Current Temperature: " + parseInt(currentData.main.temp) + "&deg;" + "F</p>";
             htmlCurrent += "<div class='current-weather-icon'>"
             htmlCurrent += '<img src="https://openweathermap.org/img/w/' + currentData.weather[0].icon + '.png"></div>';
             htmlCurrent += "<p class='solo-weather'>Weather: " + currentData.weather[0].description + "</p>";
-
-
-            // htmlCurrent += "<h5>Current humidity: " + parseInt(currentData.main.humidity) + "</h5>";
-            // htmlCurrent += "</div>";
             $("#weather-forecast-small").html(htmlCurrent);
 
 
@@ -102,6 +85,8 @@ function geoCodeCurrentWeather(searchString) {
 
     })
 };
+
+// CURRENT FORECAST EXTRA DETAILS
 
 geoCodeCurrentWeather("Dallas, TX")
 $("#myBtn").click(function (e) {
@@ -116,26 +101,15 @@ function geoCodeCurrentWeatherDetails(searchString) {
         console.log(result[1]);
 
 
-
-            // console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`);
+        // console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`);
         $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${result[1]}&lon=${result[0]}&appid=${weatherAPI}&units=imperial`).done(function (currentData) {
             console.log(currentData);
-            htmlDetail += "<div>";
-            htmlDetail += "<h2>Today's Weather Forecast:  </h2>";
-            htmlDetail += "<h6>Location: " + currentData.name + "</h6>";
-
-            htmlDetail += "<h4>Current weather: " + currentData.weather[0].description + "</h4>";
-
-
-            htmlDetail += "<h5>Current average wind speed: " + parseInt(currentData.wind.speed) + "knots</h5>";
-
-            htmlDetail += "<p>Current Temperature: " + parseInt(currentData.main.temp) + "&deg;" + "F</p>";
-            htmlDetail += "<div class='current-weather-icon'>"
-            htmlDetail += '<img src="https://openweathermap.org/img/w/' + currentData.weather[0].icon + '.png"></div>';
-            htmlDetail += "<p class='solo-weather'>Weather: " + currentData.weather[0].description + "</p>";
-
-
-            htmlDetail += "<h5>Current humidity: " + parseInt(currentData.main.humidity) + "</h5>";
+            htmlDetail += "<div class='text-center text-white'><h2>Today's Weather Forecast:  </h2></div>";
+            htmlDetail += "<div class='d-flex col-12'>";
+            htmlDetail += "<div class='col-3 card current-weather-details'><p>Current average wind speed: " + parseInt(currentData.wind.speed) + " knots</p></div>";
+            htmlDetail += "<div class='col-3 card current-weather-details'><p>Current Temperature: " + parseInt(currentData.main.temp) + "&deg;" + "F</p>\n<p>Feels like: " + parseInt(currentData.main.feels_like) + "&deg;" + "F</p></div>";
+            htmlDetail += "<div class='col-3 card current-weather-details'><p>Weather: " + currentData.weather[0].main + "</p></div>";
+            htmlDetail += "<div class='col-3 card current-weather-details'><p>Current humidity: " + parseInt(currentData.main.humidity) + "</p></div>";
             htmlDetail += "</div>";
             $("#weather-forecast-details").html(htmlDetail);
 
@@ -150,21 +124,46 @@ $("#myBtn").click(function (e) {
     geoCodeCurrentWeatherDetails($("#searchInput").val());
 })
 
+// MARKER LOCATION AND MAPBOX
 
 let personalLocation = [-96.7968, 32.7762];
-
-
-
-
 
 mapboxgl.accessToken = mapboxApi;
 var map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
-    zoom: 10, // starting zoom
+    zoom: 9, // starting zoom
     center: personalLocation, // [lng, lat]
 });
 
-// EXTRA
+// MARKER ON DRAG END
+
+geocode("Dallas, TX", mapboxgl.accessToken).then(function (result) {
+    map.setCenter(result.center);
+    map.setZoom(10);
+
+
+    let myMarker = new mapboxgl.Marker({draggable: true})
+        .setLngLat([-96.7968, 32.7762])
+        .addTo(map);
+
+
+    function onDragEnd() {
+        let dragLngLat = myMarker.getLngLat();
+        personalLocation = [dragLngLat.lng, dragLngLat.lat];
+    }
+
+    myMarker.on("dragend", onDragEnd);
+    map.on("click", (e) => {
+        let dragLngLat = e.lngLat;
+        personalLocation = [dragLngLat.lng, dragLngLat.lat];
+        myMarker.setLngLat(personalLocation);
+    });
+})
+
+
+
+
+
 
 
