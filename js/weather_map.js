@@ -1,5 +1,5 @@
 // WEATHER INFORMATION FOR THE 5 DAY FORECAST
-
+(function() {
 function geocodeWeatherForecast(searchInput) {
     let html = "";
     geocode(searchInput, mapboxApi).then(function (results) {
@@ -225,6 +225,8 @@ function myMarkerForecast() {
 
     })
 }
+
+})();
 
 
 
